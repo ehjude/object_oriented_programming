@@ -28,7 +28,7 @@ class Rover
 		elsif direction == "S"
 			@y += -1
 		elsif direction == "E"
-			@x += 1						
+			@x += 1
 		end
 	end
 
@@ -61,7 +61,14 @@ end
 rover = Rover.new(0, 0, "N")
 puts "Rover's current position is #{rover.x}, #{rover.y}, facing #{rover.direction}"
 
-puts "Enter an amount to move, or type L or R to turn left or right"
-user_instruction = gets.chomp
-rover.read_instruction(user_instruction)
-puts "Rover's current position is #{rover.x}, #{rover.y}, facing #{rover.direction}"
+while true
+	puts "Move (M), turn left (L), turn right (R), or (EXIT)"
+	user_instruction = gets.chomp
+	if user_instruction == "EXIT"
+		break
+	else	
+		rover.read_instruction(user_instruction)
+		puts "Rover's current position is #{rover.x}, #{rover.y}, facing #{rover.direction}"
+	end
+end
+
